@@ -1,0 +1,11 @@
+C:\Users\dmohl\Documents\Visual Studio 2008\Projects\Polyphony\Polyphony\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dmohl\Documents\Visual Studio 2008\Projects\Polyphony\Polyphony\bin\Debug\Polyphony.exe
+C:\Users\dmohl\Documents\Visual Studio 2008\Projects\Polyphony\Polyphony\bin\Debug\Polyphony.pdb
+C:\Users\dmohl\Documents\Visual Studio 2008\Projects\Polyphony\Polyphony\obj\Debug\Polyphony.exe
+C:\Users\dmohl\Documents\Visual Studio 2008\Projects\Polyphony\Polyphony\obj\Debug\Polyphony.pdb
+C:\git\Polyphony\Polyphony\obj\Debug\ResolveAssemblyReference.cache
+C:\git\Polyphony\Polyphony\obj\Debug\Polyphony.exe
+C:\git\Polyphony\Polyphony\obj\Debug\Polyphony.pdb
+C:\git\Polyphony\Polyphony\bin\Debug\Polyphony.exe.config
+C:\git\Polyphony\Polyphony\bin\Debug\Polyphony.exe
+C:\git\Polyphony\Polyphony\bin\Debug\Polyphony.pdb
