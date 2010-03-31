@@ -35,6 +35,7 @@
     <Compile Include="ChordClient.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

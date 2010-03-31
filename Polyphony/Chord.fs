@@ -2,12 +2,10 @@
 
 open System
 open System.Runtime.Remoting
-open System.Runtime.Remoting.Channels
 
 type Chord = class
     inherit MarshalByRefObject 
-    val key : string
-    new(key) = {key = key}
+    new () = {}
     member x.GetValueByKey(key) =
         "some value"
 end                
