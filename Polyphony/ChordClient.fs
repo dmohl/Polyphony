@@ -7,14 +7,14 @@ open System.Runtime.Remoting.Channels
 open System.Runtime.Remoting.Channels.Tcp
 
 let serverInformation = ConfigurationManager.AppSettings.Item("ClientServer")
+let selfServerInformation = ConfigurationManager.AppSettings.Item("SelfServer")
 
 let Initialize() =
     Console.WriteLine("Polyphony Client started and pointing to server {0}...", serverInformation)    
-    let tcpChannel = new TcpChannel()
-    ChannelServices.RegisterChannel(tcpChannel, false) |> ignore
+    let localObject = Activator.GetObject(typeof<Shared.Chord>, selfServerInformation) :?> Shared.Chord 
+    localObject.PutValueByKey "test" "testValue"
 
 let RunCommand(input:string) : unit =
-    let requiredType = typeof<Shared.Chord>
-    let remoteObject = Activator.GetObject(requiredType, serverInformation) :?> Shared.Chord 
-    let result = remoteObject.GetValueByKey(input)
+    let remoteObject = Activator.GetObject(typeof<Shared.Chord>, serverInformation) :?> Shared.Chord 
+    let result = remoteObject.GetValueByKey input
     Console.WriteLine(result) |> ignore

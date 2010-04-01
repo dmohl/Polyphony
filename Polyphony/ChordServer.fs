@@ -11,5 +11,5 @@ let Initialize port =
     ChannelServices.RegisterChannel(tcpChannel, false) |> ignore
     let commonType = typeof<Shared.Chord>
     RemotingConfiguration.RegisterWellKnownServiceType(commonType,
-        "chord", WellKnownObjectMode.SingleCall) |> ignore
+        "chord", WellKnownObjectMode.Singleton) |> ignore
    
