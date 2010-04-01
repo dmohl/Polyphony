@@ -12,11 +12,11 @@
   <RecentFiles>
     <RecentFiles>
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:readme.txt" caret="224" fromTop="3" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="345" fromTop="10" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="214" fromTop="10" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:App.config" caret="180" fromTop="4" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="350" fromTop="12" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Chord.fs" caret="323" fromTop="13" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="510" fromTop="13" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="254" fromTop="9" />
     </RecentFiles>
     <RecentEdits>
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="834" fromTop="20" />
@@ -37,6 +37,7 @@
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:App.config" caret="179" fromTop="4" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="271" fromTop="7" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="569" fromTop="12" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="501" fromTop="13" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>
