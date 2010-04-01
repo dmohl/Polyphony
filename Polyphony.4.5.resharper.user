@@ -13,31 +13,33 @@
     <RecentFiles>
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:readme.txt" caret="224" fromTop="3" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="214" fromTop="10" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:App.config" caret="180" fromTop="4" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:App.config" caret="170" fromTop="4" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Chord.fs" caret="323" fromTop="13" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="510" fromTop="13" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="254" fromTop="9" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="501" fromTop="13" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="326" fromTop="10" />
     </RecentFiles>
     <RecentEdits>
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="834" fromTop="20" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1396" fromTop="20" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="604" fromTop="12" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:App.config" caret="0" fromTop="0" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="55" fromTop="3" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="57" fromTop="3" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="642" fromTop="18" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="642" fromTop="16" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="280" fromTop="9" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Chord.fs" caret="204" fromTop="8" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:readme.txt" caret="224" fromTop="3" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Chord.fs" caret="50" fromTop="3" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="346" fromTop="12" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="202" fromTop="8" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Chord.fs" caret="310" fromTop="12" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="793" fromTop="18" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:App.config" caret="179" fromTop="4" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="271" fromTop="7" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="569" fromTop="12" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="501" fromTop="13" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Chord.fs" caret="323" fromTop="13" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1356" fromTop="17" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1356" fromTop="18" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1356" fromTop="18" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1303" fromTop="15" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="867" fromTop="9" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>
