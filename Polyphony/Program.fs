@@ -3,10 +3,7 @@
 open System
 open System.Configuration
 
-let port = ConfigurationManager.AppSettings.Item("ServerPort")
-
-ChordServer.Initialize(Convert.ToInt32(port)) |> ignore
-ChordClient.Initialize() |> ignore
+ChordServer.Initialize() |> ignore
 
 Console.Write "\nEnter Command:"
 let mutable input = Console.ReadLine()

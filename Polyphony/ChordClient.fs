@@ -2,17 +2,10 @@
 
 open System
 open System.Configuration
-open System.Runtime.Remoting
-open System.Runtime.Remoting.Channels
-open System.Runtime.Remoting.Channels.Tcp
+open System.ServiceModel
 
-let serverInformation = ConfigurationManager.AppSettings.Item("ClientServer")
-let selfServerInformation = ConfigurationManager.AppSettings.Item("SelfServer")
-
-let Initialize() =
-    Console.WriteLine("Polyphony Client started and pointing to server {0}...", serverInformation)    
-    let localObject = Activator.GetObject(typeof<Shared.Chord>, selfServerInformation) :?> Shared.Chord 
-    localObject.PutValueByKey "test" "testValue"
+let remoteServer = ConfigurationManager.AppSettings.Item("RemoteServer")
+let localServer = ConfigurationManager.AppSettings.Item("LocalServer")
 
 let RunCommand(input:string) : unit =
     
@@ -20,15 +13,22 @@ let RunCommand(input:string) : unit =
     let result = 
         match inputArguments.[0] with
         | "put" -> 
-            let localObject = Activator.GetObject(typeof<Shared.Chord>, selfServerInformation) :?> Shared.Chord     
-            localObject.PutValueByKey inputArguments.[1] inputArguments.[2] |> ignore
+            let service = new ChannelFactory<ChordServer.IChordServer>(
+                                new NetTcpBinding(), localServer)  
+            let proxy = service.CreateChannel()        
+            proxy.PutValueByKey inputArguments.[1] inputArguments.[2] |> ignore
+            service.Close |> ignore
             sprintf "PUT Key:%A Value:%A" inputArguments.[1] inputArguments.[2] :> obj   
         | "get" -> 
-            let rec getValue server =
-                let chord = Activator.GetObject(typeof<Shared.Chord>, server) :?> Shared.Chord         
-                match chord.GetValueByKey inputArguments.[1] with
-                | null -> getValue serverInformation    
-                | value -> value
-            getValue selfServerInformation
+            let rec getValue (server:string) =
+                let service = new ChannelFactory<ChordServer.IChordServer>(
+                                new NetTcpBinding(), server)  
+                let proxy = service.CreateChannel() 
+                let value = proxy.GetValueByKey inputArguments.[1]     
+                service.Close |> ignore
+                match value with
+                | null -> getValue remoteServer    
+                | _ -> value
+            getValue localServer
         | _ -> "unknown command" :> obj   
     Console.WriteLine(result) |> ignore

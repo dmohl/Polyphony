@@ -2,4 +2,3 @@
 using the concept Chord protocol (http://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf)
 
 03/31/2010 - Created a simple .NET remoting POC
-4/3/2010 - Moved to WCF with TCP binding
