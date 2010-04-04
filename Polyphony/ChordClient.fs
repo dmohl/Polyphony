@@ -7,25 +7,37 @@ open System.ServiceModel
 let remoteServer = ConfigurationManager.AppSettings.Item("RemoteServer")
 let localServer = ConfigurationManager.AppSettings.Item("LocalServer")
 
+let CallServer (server:string) (operationContract:string) (inputArguments:string[]) =
+    let service = new ChannelFactory<ChordServer.IChordServer>(
+                        new NetTcpBinding(), server)  
+    try                    
+        try
+            let proxy = service.CreateChannel()        
+            let result = match operationContract with
+                         | "put" ->
+                             proxy.PutValueByKey inputArguments.[1] inputArguments.[2] 
+                             "Put Complete" :> obj
+                         | "get" -> 
+                             proxy.GetValueByKey inputArguments.[1]     
+                         | _ -> "Unknown" :> obj 
+            result             
+        with
+        | ex -> 
+            Console.WriteLine ex.Message
+            "Unknown" :> obj
+    finally                 
+        service.Close |> ignore
+
 let RunCommand(input:string) : unit =
-    
     let inputArguments = input.Split(' ')
     let result = 
         match inputArguments.[0] with
-        | "put" -> 
-            let service = new ChannelFactory<ChordServer.IChordServer>(
-                                new NetTcpBinding(), localServer)  
-            let proxy = service.CreateChannel()        
-            proxy.PutValueByKey inputArguments.[1] inputArguments.[2] |> ignore
-            service.Close |> ignore
+        | "put" ->
+            CallServer localServer inputArguments.[0] inputArguments |> ignore
             sprintf "PUT Key:%A Value:%A" inputArguments.[1] inputArguments.[2] :> obj   
         | "get" -> 
-            let rec getValue (server:string) =
-                let service = new ChannelFactory<ChordServer.IChordServer>(
-                                new NetTcpBinding(), server)  
-                let proxy = service.CreateChannel() 
-                let value = proxy.GetValueByKey inputArguments.[1]     
-                service.Close |> ignore
+            let rec getValue server =
+                let value = CallServer server inputArguments.[0] inputArguments
                 match value with
                 | null -> getValue remoteServer    
                 | _ -> value
