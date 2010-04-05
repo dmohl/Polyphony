@@ -7,7 +7,7 @@ open ChordServerProxy
 let remoteServer = ConfigurationManager.AppSettings.Item("RemoteServer")
 let localServer = ConfigurationManager.AppSettings.Item("LocalServer")
 
-let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : unit =
+let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : obj =
     let inputArguments = input.Split(' ')
     let result = 
         match inputArguments.[0] with
@@ -23,3 +23,4 @@ let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : unit =
             getValue localServer
         | _ -> "unknown command" :> obj   
     Console.WriteLine(result) |> ignore
+    result
