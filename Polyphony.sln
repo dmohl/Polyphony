@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Polyphony", "Polyphony\Polyphony.fsproj", "{09E1A33E-8FBB-4447-8E6C-7AB49A817808}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Polyphony", "src\Polyphony\Polyphony.fsproj", "{09E1A33E-8FBB-4447-8E6C-7AB49A817808}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Polyphony.Tests", "tests\Polyphony.Tests\Polyphony.Tests.fsproj", "{E7A39B3E-7513-4696-AC22-0242D9311A4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{09E1A33E-8FBB-4447-8E6C-7AB49A817808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E1A33E-8FBB-4447-8E6C-7AB49A817808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E1A33E-8FBB-4447-8E6C-7AB49A817808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A39B3E-7513-4696-AC22-0242D9311A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A39B3E-7513-4696-AC22-0242D9311A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A39B3E-7513-4696-AC22-0242D9311A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A39B3E-7513-4696-AC22-0242D9311A4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

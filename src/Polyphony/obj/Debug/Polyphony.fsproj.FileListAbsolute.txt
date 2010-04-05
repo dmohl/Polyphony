@@ -9,3 +9,9 @@ C:\git\Polyphony\Polyphony\obj\Debug\Polyphony.pdb
 C:\git\Polyphony\Polyphony\bin\Debug\Polyphony.exe.config
 C:\git\Polyphony\Polyphony\bin\Debug\Polyphony.exe
 C:\git\Polyphony\Polyphony\bin\Debug\Polyphony.pdb
+C:\git\Polyphony\src\Polyphony\bin\Debug\Polyphony.exe.config
+C:\git\Polyphony\src\Polyphony\bin\Debug\Polyphony.exe
+C:\git\Polyphony\src\Polyphony\bin\Debug\Polyphony.pdb
+C:\git\Polyphony\src\Polyphony\obj\Debug\ResolveAssemblyReference.cache
+C:\git\Polyphony\src\Polyphony\obj\Debug\Polyphony.exe
+C:\git\Polyphony\src\Polyphony\obj\Debug\Polyphony.pdb

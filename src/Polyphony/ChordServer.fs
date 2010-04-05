@@ -5,6 +5,7 @@ open System.ServiceModel
 open System.Collections
 open System.Configuration
 open System.Net
+open SettingsProvider
 
 [<ServiceContract>]  
 type IChordServer = interface   
@@ -29,11 +30,10 @@ let logException (ex:Exception) =
     Console.WriteLine("Error: {0}", ex.Message)
     Console.WriteLine(ex.Source)
     
-let Initialize () =
+let Initialize (settingsProvider:ISettingsProvider) (host:ServiceHost) =
     try
-        let localServer = ConfigurationManager.AppSettings.Item("LocalServer")
+        let localServer = settingsProvider.GetApplicationSetting("LocalServer")
         Console.WriteLine("Starting Server: {0}", localServer)
-        let host = new ServiceHost(typeof<ChordServer>)
         host.AddServiceEndpoint(typeof<IChordServer>,
                     new NetTcpBinding(), localServer) |> ignore       
         host.Open()

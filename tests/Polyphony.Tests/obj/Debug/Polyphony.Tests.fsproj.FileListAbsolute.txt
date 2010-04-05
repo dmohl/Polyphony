@@ -1,0 +1,11 @@
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\Polyphony.Tests.dll
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\Polyphony.Tests.pdb
+C:\git\Polyphony\tests\Polyphony.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\git\Polyphony\tests\Polyphony.Tests\obj\Debug\Polyphony.Tests.dll
+C:\git\Polyphony\tests\Polyphony.Tests\obj\Debug\Polyphony.Tests.pdb
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\Polyphony.Tests.dll.config
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\nunit.framework.dll
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\Polyphony.exe
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\Rhino.Mocks.dll
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\SpecUnit.dll
+C:\git\Polyphony\tests\Polyphony.Tests\bin\Debug\Polyphony.pdb
