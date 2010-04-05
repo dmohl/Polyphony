@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="ChordServer.Tests.fs" />
     <None Include="App.config" />
+    <Compile Include="ChordClient.Tests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

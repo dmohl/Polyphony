@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="SettingsProvider.fs" />
     <Compile Include="ChordServer.fs" />
+    <Compile Include="ChordServerProxy.fs" />
     <Compile Include="ChordClient.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
