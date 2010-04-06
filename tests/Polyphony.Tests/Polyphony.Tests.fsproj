@@ -30,8 +30,9 @@
     <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ChordServer.Tests.fs" />
     <None Include="App.config" />
+    <Compile Include="FakeChordServerProxy.fs" />
+    <Compile Include="ChordServer.Tests.fs" />
     <Compile Include="ChordClient.Tests.fs" />
   </ItemGroup>
   <ItemGroup>

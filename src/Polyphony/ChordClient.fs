@@ -12,14 +12,16 @@ let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : obj =
     let result = 
         match inputArguments.[0] with
         | "put" ->
-            chordServerProxy.CallServer localServer inputArguments.[0] inputArguments |> ignore
-            sprintf "PUT Key:%A Value:%A" inputArguments.[1] inputArguments.[2] :> obj   
+            let valueOption = chordServerProxy.CallServer localServer inputArguments.[0] inputArguments 
+            match valueOption with
+            | Some _ -> sprintf "PUT Key:%A Value:%A" inputArguments.[1] inputArguments.[2] :> obj       
+            | None -> sprintf "The PUT was not successful" :> obj
         | "get" -> 
             let rec getValue server =
-                let value = chordServerProxy.CallServer server inputArguments.[0] inputArguments
-                match value with
-                | null -> getValue remoteServer    
-                | _ -> value
+                let valueOption = chordServerProxy.CallServer server inputArguments.[0] inputArguments 
+                match valueOption with
+                | Some value -> value    
+                | None -> getValue remoteServer
             getValue localServer
         | _ -> "unknown command" :> obj   
     Console.WriteLine(result) |> ignore

@@ -4,7 +4,7 @@ open System
 open System.ServiceModel
 
 type IChordServerProxy = interface   
-    abstract CallServer : server:string -> operationContract:string -> inputArguments:string[] -> obj
+    abstract CallServer : server:string -> operationContract:string -> inputArguments:string[] -> obj option
 end
 
 type ChordServerProxy() = 
@@ -18,14 +18,14 @@ type ChordServerProxy() =
                     let result = match operationContract with
                                  | "put" ->
                                      proxy.PutValueByKey inputArguments.[1] inputArguments.[2] 
-                                     "Put Complete" :> obj
+                                     Some("Put Complete" :> obj)
                                  | "get" -> 
-                                     proxy.GetValueByKey inputArguments.[1]     
-                                 | _ -> "Unknown" :> obj 
+                                     Some(proxy.GetValueByKey inputArguments.[1])     
+                                 | _ -> None 
                     result             
                 with
                 | ex -> 
                     Console.WriteLine ex.Message
-                    "Unknown" :> obj
+                    None
             finally                 
                 service.Close |> ignore
