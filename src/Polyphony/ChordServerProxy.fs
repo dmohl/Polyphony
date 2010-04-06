@@ -19,8 +19,10 @@ type ChordServerProxy() =
                                  | "put" ->
                                      proxy.PutValueByKey inputArguments.[1] inputArguments.[2] 
                                      Some("Put Complete" :> obj)
-                                 | "get" -> 
-                                     Some(proxy.GetValueByKey inputArguments.[1])     
+                                 | "get" ->
+                                    match proxy.GetValueByKey inputArguments.[1] with
+                                    | null -> None
+                                    | value -> Some(value)
                                  | _ -> None 
                     result             
                 with
