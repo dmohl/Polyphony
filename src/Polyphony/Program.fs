@@ -6,6 +6,8 @@ open System.ServiceModel
 open ChordServerProxy
 
 ChordServer.Initialize (new SettingsProvider.SettingsProvider()) (new ServiceHost(typeof<ChordServer.ChordServer>)) |> ignore
+ChordClient.JoinChordNodeNetwork () |> ignore
+
 let chordServerProxy = new ChordServerProxy() :> IChordServerProxy
 
 Console.Write "\nEnter Command:"
@@ -15,7 +17,7 @@ while input <> "quit"
     do
     if input <> "quit" 
     then
-        ChordClient.RunCommand input chordServerProxy
+        ChordClient.RunCommand input chordServerProxy |> ignore
         Console.Write "\nEnter Command:" 
         input <- Console.ReadLine()
 

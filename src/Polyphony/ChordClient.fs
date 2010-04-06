@@ -26,3 +26,8 @@ let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : obj =
         | _ -> "unknown command" :> obj   
     Console.WriteLine(result) |> ignore
     result
+
+let JoinChordNodeNetwork () =
+    // Join the network
+    // Return this nodes successor
+    remoteServer
