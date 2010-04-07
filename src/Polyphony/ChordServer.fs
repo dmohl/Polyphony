@@ -32,10 +32,10 @@ let logException (ex:Exception) =
     
 let Initialize (settingsProvider:ISettingsProvider) (host:ServiceHost) =
     try
-        let localServer = settingsProvider.GetApplicationSetting("LocalServer")
-        Console.WriteLine("Starting Server: {0}", localServer)
+        let localNode = settingsProvider.GetApplicationSetting("LocalNode")
+        Console.WriteLine("Starting Node: {0}", localNode)
         host.AddServiceEndpoint(typeof<IChordServer>,
-                    new NetTcpBinding(), localServer) |> ignore       
+                    new NetTcpBinding(), localNode) |> ignore       
         host.Open()
         Some(host)
     with

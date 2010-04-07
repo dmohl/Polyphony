@@ -30,8 +30,10 @@
     <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ChordCommon.fs" />
     <Compile Include="SettingsProvider.fs" />
     <Compile Include="ChordServer.fs" />
+    <Compile Include="ChordServerProxyCommands.fs" />
     <Compile Include="ChordServerProxy.fs" />
     <Compile Include="ChordClient.fs" />
     <Compile Include="Program.fs" />

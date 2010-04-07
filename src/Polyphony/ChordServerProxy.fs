@@ -2,9 +2,11 @@
 
 open System
 open System.ServiceModel
+open ChordCommon
+open ChordServerProxyCommands
 
 type IChordServerProxy = interface   
-    abstract CallServer : server:string -> operationContract:string -> inputArguments:string[] -> obj option
+    abstract CallServer : server:string -> operationContract:CommandType -> inputArguments:string[] -> obj option
 end
 
 type ChordServerProxy() = 
@@ -16,13 +18,8 @@ type ChordServerProxy() =
                 try
                     let proxy = service.CreateChannel()        
                     let result = match operationContract with
-                                 | "put" ->
-                                     proxy.PutValueByKey inputArguments.[1] inputArguments.[2] 
-                                     Some("Put Complete" :> obj)
-                                 | "get" ->
-                                    match proxy.GetValueByKey inputArguments.[1] with
-                                    | null -> None
-                                    | value -> Some(value)
+                                 | CommandType.Put -> RunPutCommand proxy inputArguments
+                                 | CommandType.Get -> RunGetCommand proxy inputArguments
                                  | _ -> None 
                     result             
                 with
