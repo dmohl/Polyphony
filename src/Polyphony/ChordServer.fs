@@ -13,17 +13,29 @@ type IChordServer = interface
     abstract PutValueByKey : key:obj -> value:obj -> unit  
     [<OperationContract>]  
     abstract GetValueByKey : value:obj -> obj  
+    [<OperationContract>]  
+    abstract RequestJoinChordNodeNetwork : requestorNode:string -> obj  
 end
 
 [<ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)>]
 type ChordServer = class
     val hashTable : Hashtable
+    [<DefaultValue(false)>]
+    val mutable node : string
+    [<DefaultValue(false)>]
+    val mutable successorNode : string
     new () = {hashTable = new Hashtable()}
     interface IChordServer with
         member x.PutValueByKey key value =
             x.hashTable.Add(key, value)
         member x.GetValueByKey key =
             x.hashTable.Item(key)
+        member x.RequestJoinChordNodeNetwork requestorNode =
+            requestorNode :> obj
+//            match requestorNode with
+//            | _ when requestorNode > x.node && requestorNode < x.successorNode -> 
+//                x.successorNode <- requestorNode
+//                requestorNode
 end
 
 let logException (ex:Exception) =

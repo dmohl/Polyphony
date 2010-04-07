@@ -16,12 +16,8 @@ type ChordServerProxy() =
                                 new NetTcpBinding(), server)  
             try                    
                 try
-                    let proxy = service.CreateChannel()        
-                    let result = match operationContract with
-                                 | CommandType.Put -> RunPutCommand proxy inputArguments
-                                 | CommandType.Get -> RunGetCommand proxy inputArguments
-                                 | _ -> None 
-                    result             
+                    let proxy = service.CreateChannel()   
+                    RunCommand proxy operationContract inputArguments     
                 with
                 | ex -> 
                     Console.WriteLine ex.Message

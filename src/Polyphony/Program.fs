@@ -6,6 +6,7 @@ open System.ServiceModel
 open ChordServerProxy
 
 let remoteNode = ConfigurationManager.AppSettings.Item("RemoteNode")
+let localNode = ConfigurationManager.AppSettings.Item("RemoteNode")
 
 ChordServer.Initialize (new SettingsProvider.SettingsProvider()) (new ServiceHost(typeof<ChordServer.ChordServer>)) |> ignore
 ChordClient.JoinChordNodeNetwork remoteNode |> ignore
