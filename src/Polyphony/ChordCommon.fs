@@ -1,7 +1,11 @@
 ﻿module ChordCommon
 
-open System.Runtime.Serialization
+open System
 
+let LogException (ex:Exception) =
+    Console.WriteLine("Error: {0}", ex.Message)
+    Console.WriteLine(ex.Source)
+    
 type CommandType = 
     | Put
     | Get
@@ -9,15 +13,3 @@ type CommandType =
     | UpdateSuccessorNode
     | GetSuccessorNode
 
-[<DataContract>]    
-type NodeNeighbors() = 
-    let mutable predecessorNode = ""
-    let mutable successorNode = ""
-    [<DataMember>]
-    member x.PredecessorNode
-        with get() = predecessorNode
-        and set value = predecessorNode <- value
-    [<DataMember>]
-    member x.SuccessorNode
-        with get() = successorNode
-        and set value = successorNode <- value

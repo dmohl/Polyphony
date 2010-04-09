@@ -4,6 +4,7 @@ open System
 open System.Configuration
 open ChordServerProxy
 open ChordCommon
+open ChordDataContracts
 
 let remoteNode = ConfigurationManager.AppSettings.Item("RemoteNode")
 let localNode = ConfigurationManager.AppSettings.Item("LocalNode")

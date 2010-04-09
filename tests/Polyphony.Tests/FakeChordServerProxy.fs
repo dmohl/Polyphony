@@ -2,6 +2,7 @@
 
 open ChordServerProxy
 open ChordCommon
+open ChordDataContracts
 
 type FakeChordServerProxy() = 
     interface IChordServerProxy with

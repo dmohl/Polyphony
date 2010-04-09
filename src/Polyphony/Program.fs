@@ -14,9 +14,9 @@ ChordServer.Initialize (new SettingsProvider.SettingsProvider()) (new ServiceHos
 
 let chordServerProxy = new ChordServerProxy() :> IChordServerProxy
 let nodeSuccessor = ChordClient.JoinChordNodeNetwork localNode remoteNode chordServerProxy 
-match nodeSuccessor with
-| "" -> ChordClient.JoinChordNodeNetwork localNode localNode chordServerProxy |> ignore
-| _ -> nodeSuccessor |> ignore
+//match nodeSuccessor with
+//| "" -> ChordClient.JoinChordNodeNetwork localNode localNode chordServerProxy |> ignore
+//| _ -> nodeSuccessor |> ignore
 
 Console.Write("\n{0}>", localNode)
 let mutable input = Console.ReadLine()

@@ -7,6 +7,8 @@ open System.Configuration
 open System.Net
 open SettingsProvider
 open ChordCommon
+open ChordServerHelper
+open ChordDataContracts
 
 [<ServiceContract>]  
 type IChordServer = interface   
@@ -42,43 +44,18 @@ type ChordServer = class
         member x.RequestJoinChordNodeNetwork requestorNode =
             let result = 
                 match requestorNode with
-                // If the requestorNode equals the current node (meaning 
-                // there is only one node on the network) or if current node
-                // is equal to the current nodes successor (meaning there is only
-                // one other node on the network) then we should
-                // return the current node as both the predecessor and the successor.
                 | _ when requestorNode = x.node || x.node = x.successorNode ->
                     x.successorNode <- requestorNode 
-                    let nodeNeighbors = new NodeNeighbors()
-                    nodeNeighbors.PredecessorNode <- x.node
-                    nodeNeighbors.SuccessorNode <- x.node
-                    nodeNeighbors
-                // If the requestor node is in between the current node and the 
-                // current node's successor, then make the current node's successor
-                // the requestor node and return the current node as the requestor
-                // nodes predeccessor and the current node's successor as the 
-                // requestor nodes successor
+                    BuildNodeNeighbors x.node x.node
                 | _ when requestorNode > x.node && requestorNode < x.successorNode -> 
                     let requestorsSuccessor = x.successorNode 
                     x.successorNode <- requestorNode
-                    let nodeNeighbors = new NodeNeighbors()
-                    nodeNeighbors.PredecessorNode <- x.node
-                    nodeNeighbors.SuccessorNode <- x.node
-                    nodeNeighbors
-                // We don't know who the predecessor or successor is.  
-                // Try the current nodes successor and see if they know what to do.   
+                    BuildNodeNeighbors x.node requestorsSuccessor
                 | _ -> 
-                    let nodeNeighbors = new NodeNeighbors()
-                    nodeNeighbors.PredecessorNode <- x.successorNode
-                    nodeNeighbors.SuccessorNode <- x.successorNode
-                    nodeNeighbors
+                    BuildNodeNeighbors x.successorNode x.successorNode
             result
 end
-
-let logException (ex:Exception) =
-    Console.WriteLine("Error: {0}", ex.Message)
-    Console.WriteLine(ex.Source)
-    
+   
 let Initialize (settingsProvider:ISettingsProvider) (host:ServiceHost) =
     try
         let localNode = settingsProvider.GetApplicationSetting("LocalNode")
@@ -87,7 +64,7 @@ let Initialize (settingsProvider:ISettingsProvider) (host:ServiceHost) =
         host.Open()
         Some(host)
     with
-    | ex -> logException ex
+    | ex -> LogException ex
             None
            
 let Stop (host: ServiceHost option)  =
@@ -99,4 +76,4 @@ let Stop (host: ServiceHost option)  =
                 host.Close()
                 Console.WriteLine("Stopping Server")               
     with
-    | ex -> logException ex           
+    | ex -> LogException ex           
