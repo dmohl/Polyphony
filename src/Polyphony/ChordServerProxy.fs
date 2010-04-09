@@ -20,7 +20,6 @@ type ChordServerProxy() =
                     RunCommand proxy operationContract inputArguments     
                 with
                 | ex -> 
-                    Console.WriteLine ex.Message
                     None
             finally
                 match service.State with

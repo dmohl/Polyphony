@@ -23,6 +23,8 @@ let RunGetCommand node (inputArguments:string[]) (chordServerProxy:IChordServerP
         | None -> 
             let successorNodeOption = chordServerProxy.CallServer node CommandType.GetSuccessorNode inputArguments 
             match successorNodeOption with
+            | Some successorNode when localNode = (successorNode :?> string) ->
+                "The Key was not found" :> obj
             | Some successorNode -> getValue (successorNode :?> string) localNode
             | None -> "The Key was not found" :> obj
     getValue localNode ""
@@ -46,10 +48,10 @@ let JoinChordNodeNetwork localNode remoteNode (chordServerProxy:IChordServerProx
         | Some value -> 
             let nodeNeighbors = value :?> NodeNeighbors
             match nodeNeighbors.PredecessorNode with
-            | possiblePredecessorNode -> nodeNeighbors.SuccessorNode
+            | predecessorNode when possiblePredecessorNode = predecessorNode -> nodeNeighbors.SuccessorNode
             | _ -> joinTheNetwork nodeNeighbors.SuccessorNode
-        | None -> "" // throw exception?  failwith?
+        | None -> localNode
     let successorNode = joinTheNetwork remoteNode
     chordServerProxy.CallServer localNode 
         CommandType.UpdateSuccessorNode [|successorNode|] |> ignore
-    successorNode
+    successorNode    
