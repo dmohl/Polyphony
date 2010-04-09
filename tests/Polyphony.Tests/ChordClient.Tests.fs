@@ -16,7 +16,7 @@ type ChordClient__when_running_a_put_command () =
         override this.Because () =
             let chordServerProxy = new FakeChordServerProxy()
             let stringList = [|"put"; "1"; "test1"|]
-            this._result <- ChordClient.RunCommand "put 1 test1" chordServerProxy
+            this._result <- ChordClient.RunCommand "put 1 test1" chordServerProxy (new SettingsProvider.SettingsProvider())
         [<Test>]    
         member this.should_have_a_result_of_Put_Complete () =    
             this._result.ShouldEqual("PUT Key:\"1\" Value:\"test1\"") |> ignore
@@ -29,7 +29,7 @@ type ChordClient__when_running_a_get_command () =
         override this.Because () =
             let chordServerProxy = new FakeChordServerProxy()
             let stringList = [|"get"; "1"|]
-            this._result <- ChordClient.RunCommand "get 1" chordServerProxy
+            this._result <- ChordClient.RunCommand "get 1" chordServerProxy (new SettingsProvider.SettingsProvider())
         [<Test>]    
         member this.should_have_a_result_of_1 () =    
             this._result.ShouldEqual("1") |> ignore
