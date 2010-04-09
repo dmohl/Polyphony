@@ -13,11 +13,11 @@ type IChordServer = interface
     [<OperationContract>]  
     abstract GetSuccessorNode : unit -> string
     [<OperationContract>]  
+    abstract UpdateSuccessorNode : newSuccessorNode:string -> string  
+    [<OperationContract>]  
     abstract PutValueByKey : key:obj -> value:obj -> unit  
     [<OperationContract>]  
     abstract GetValueByKey : value:obj -> obj  
-    [<OperationContract>]  
-    abstract UpdateSuccessorNode : newSuccessorNode:string -> string  
     [<OperationContract>]  
     abstract RequestJoinChordNodeNetwork : requestorNode:string -> NodeNeighbors  
 end
@@ -32,13 +32,13 @@ type ChordServer = class
     interface IChordServer with
         member x.GetSuccessorNode () =
             x.successorNode
+        member x.UpdateSuccessorNode newSuccessorNode =
+            x.successorNode <- newSuccessorNode 
+            x.successorNode
         member x.PutValueByKey key value =
             x.hashTable.Add(key, value)
         member x.GetValueByKey key =
             x.hashTable.Item(key)
-        member x.UpdateSuccessorNode newSuccessorNode =
-            x.successorNode <- newSuccessorNode 
-            x.successorNode
         member x.RequestJoinChordNodeNetwork requestorNode =
             let result = 
                 match requestorNode with
@@ -69,8 +69,8 @@ type ChordServer = class
                 // Try the current nodes successor and see if they know what to do.   
                 | _ -> 
                     let nodeNeighbors = new NodeNeighbors()
-                    nodeNeighbors.PredecessorNode <- x.node
-                    nodeNeighbors.SuccessorNode <- x.node
+                    nodeNeighbors.PredecessorNode <- x.successorNode
+                    nodeNeighbors.SuccessorNode <- x.successorNode
                     nodeNeighbors
             result
 end
