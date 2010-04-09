@@ -17,7 +17,7 @@ type ChordServerProxy() =
             try                    
                 try
                     let proxy = service.CreateChannel()   
-                    RunCommand proxy operationContract inputArguments     
+                    RunCommand proxy operationContract inputArguments
                 with
                 | ex -> 
                     None

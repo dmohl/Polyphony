@@ -12,47 +12,47 @@
   <RecentFiles>
     <RecentFiles>
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:App.config" caret="197" fromTop="4" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordCommon.fs" caret="128" fromTop="8" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="2808" fromTop="31" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="478" fromTop="2" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxy.fs" caret="0" fromTop="0" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="1233" fromTop="10" />
-      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:FakeChordServerProxy.fs" caret="592" fromTop="9" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="1748" fromTop="5" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2344" fromTop="11" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordClient.Tests.fs" caret="1699" fromTop="7" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordCommon.fs" caret="127" fromTop="7" />
+      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:FakeChordServerProxy.fs" caret="760" fromTop="10" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="535" fromTop="6" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxy.fs" caret="1132" fromTop="8" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="783" fromTop="5" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="1656" fromTop="0" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2104" fromTop="9" />
     </RecentFiles>
     <RecentEdits>
-      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="1081" fromTop="9" />
-      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="567" fromTop="6" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="825" fromTop="8" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="1231" fromTop="10" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="470" fromTop="3" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="869" fromTop="11" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="863" fromTop="2" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="2864" fromTop="10" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="2296" fromTop="7" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="1511" fromTop="2" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1941" fromTop="8" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2110" fromTop="9" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordCommon.fs" caret="180" fromTop="8" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2547" fromTop="9" />
       <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="169" fromTop="3" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="1895" fromTop="6" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordClient.Tests.fs" caret="1539" fromTop="6" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordClient.Tests.fs" caret="1903" fromTop="11" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="2809" fromTop="31" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="477" fromTop="2" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="3013" fromTop="31" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordClient.Tests.fs" caret="1903" fromTop="1" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="2017" fromTop="11" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="2017" fromTop="1" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="1538" fromTop="3" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="2003" fromTop="8" />
-      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:FakeChordServerProxy.fs" caret="677" fromTop="10" />
-      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:FakeChordServerProxy.fs" caret="592" fromTop="9" />
+      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:FakeChordServerProxy.fs" caret="762" fromTop="10" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordServer.Tests.fs" caret="1748" fromTop="5" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2325" fromTop="10" />
-      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1776" fromTop="4" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2174" fromTop="4" />
       <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:ChordClient.Tests.fs" caret="1699" fromTop="7" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="230" fromTop="6" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="1095" fromTop="4" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordCommon.fs" caret="126" fromTop="7" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="1022" fromTop="11" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="1454" fromTop="9" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="965" fromTop="4" />
+      <File id="E7A39B3E-7513-4696-AC22-0242D9311A4F/f:FakeChordServerProxy.fs" caret="759" fromTop="10" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1254" fromTop="8" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="259" fromTop="3" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxy.fs" caret="792" fromTop="10" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="2763" fromTop="8" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordClient.fs" caret="1857" fromTop="5" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:Program.fs" caret="747" fromTop="9" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxy.fs" caret="744" fromTop="8" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServerProxyCommands.fs" caret="783" fromTop="5" />
+      <File id="09E1A33E-8FBB-4447-8E6C-7AB49A817808/f:ChordServer.fs" caret="2050" fromTop="4" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>

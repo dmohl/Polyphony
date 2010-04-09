@@ -47,7 +47,8 @@ type ChordServer = class
                 // is equal to the current nodes successor (meaning there is only
                 // one other node on the network) then we should
                 // return the current node as both the predecessor and the successor.
-                | _ when requestorNode = x.node || x.node = x.successorNode -> 
+                | _ when requestorNode = x.node || x.node = x.successorNode ->
+                    x.successorNode <- requestorNode 
                     {PredecessorNode = x.node; SuccessorNode = x.node}
                 // If the requestor node is in between the current node and the 
                 // current node's successor, then make the current node's successor
