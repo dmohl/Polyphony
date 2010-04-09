@@ -13,6 +13,7 @@ type FakeChordServerProxy() =
                     | CommandType.Get -> Some(inputArguments.[1] :> obj)
                     | CommandType.Join -> Some({PredecessorNode = "localhost:1111"; SuccessorNode = "localhost:3333"} :> obj)
                     | CommandType.UpdateSuccessorNode -> Some(inputArguments.[0] :> obj)
+                    | CommandType.GetSuccessorNode -> Some("localhost:3333" :> obj)
                 result             
             with
             | ex -> 

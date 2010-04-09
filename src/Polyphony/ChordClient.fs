@@ -20,7 +20,11 @@ let RunGetCommand node (inputArguments:string[]) (chordServerProxy:IChordServerP
         match valueOption with
         | Some value -> value   
         | None when localServerForRecursionStopCheck = localNode -> "The Key was not found" :> obj
-        | None -> getValue remoteNode localNode
+        | None -> 
+            let successorNodeOption = chordServerProxy.CallServer node CommandType.GetSuccessorNode inputArguments 
+            match successorNodeOption with
+            | Some successorNode -> getValue (successorNode :?> string) localNode
+            | None -> "The Key was not found" :> obj
     getValue localNode ""
 
 let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : obj =

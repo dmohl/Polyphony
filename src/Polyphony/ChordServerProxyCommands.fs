@@ -23,12 +23,18 @@ let RunUpdateSuccessorNode (proxy:ChordServer.IChordServer) (inputArguments:stri
     | null -> None
     | value -> Some(value)
     
+let RunGetSuccessorNodeCommand (proxy:ChordServer.IChordServer) =
+    match proxy.GetSuccessorNode () with
+    | null -> None
+    | value -> Some(value)
+
 let RunCommand proxy operationContract inputArguments =
     match operationContract with
     | CommandType.Put -> RunPutCommand proxy inputArguments
     | CommandType.Get -> RunGetCommand proxy inputArguments
     | CommandType.Join -> RunJoinCommand proxy inputArguments
     | CommandType.UpdateSuccessorNode -> RunUpdateSuccessorNode proxy inputArguments
+    | CommandType.GetSuccessorNode -> RunGetSuccessorNodeCommand proxy
 
 
 

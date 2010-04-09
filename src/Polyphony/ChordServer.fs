@@ -11,6 +11,8 @@ open ChordCommon
 [<ServiceContract>]  
 type IChordServer = interface   
     [<OperationContract>]  
+    abstract GetSuccessorNode : unit -> obj
+    [<OperationContract>]  
     abstract PutValueByKey : key:obj -> value:obj -> unit  
     [<OperationContract>]  
     abstract GetValueByKey : value:obj -> obj  
@@ -28,6 +30,8 @@ type ChordServer = class
     new (node, successorNode) = {hashTable = new Hashtable(); 
         node = node; successorNode = successorNode}
     interface IChordServer with
+        member x.GetSuccessorNode () =
+            x.successorNode :> obj
         member x.PutValueByKey key value =
             x.hashTable.Add(key, value)
         member x.GetValueByKey key =

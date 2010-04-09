@@ -5,5 +5,6 @@ type CommandType =
     | Get
     | Join
     | UpdateSuccessorNode
+    | GetSuccessorNode
     
 type NodeNeighbors = { PredecessorNode : string; SuccessorNode: string; }
