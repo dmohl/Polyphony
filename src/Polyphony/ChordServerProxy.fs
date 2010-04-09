@@ -22,5 +22,13 @@ type ChordServerProxy() =
                 | ex -> 
                     Console.WriteLine ex.Message
                     None
-            finally                 
-                service.Close |> ignore
+            finally
+                match service.State with
+                | CommunicationState.Faulted -> 
+                    try
+                        service.Close |> ignore
+                    with
+                    | ex ->
+                        service.Abort |> ignore
+                | _ -> service.Close |> ignore                            
+

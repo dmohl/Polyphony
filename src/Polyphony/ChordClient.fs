@@ -35,6 +35,17 @@ let RunCommand(input:string) (chordServerProxy:IChordServerProxy) : obj =
     Console.WriteLine(result) |> ignore
     result
 
-let JoinChordNodeNetwork originatingNode (chordServerProxy:IChordServerProxy) =
-    //chordServerProxy
-    originatingNode
+let JoinChordNodeNetwork localNode remoteNode (chordServerProxy:IChordServerProxy) =
+    let rec joinTheNetwork possiblePredecessorNode =
+        let valueOption = chordServerProxy.CallServer possiblePredecessorNode CommandType.Join [|localNode|]
+        match valueOption with
+        | Some value -> 
+            let nodeNeighbors = value :?> NodeNeighbors
+            match nodeNeighbors.PredecessorNode with
+            | possiblePredecessorNode -> nodeNeighbors.SuccessorNode
+            | _ -> joinTheNetwork nodeNeighbors.SuccessorNode
+        | None -> "" // throw exception?  failwith?
+    let successorNode = joinTheNetwork remoteNode
+    chordServerProxy.CallServer localNode 
+        CommandType.UpdateSuccessorNode [|successorNode|] |> ignore
+    successorNode

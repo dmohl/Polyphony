@@ -40,7 +40,10 @@ type ChordClient__when_joining_the_chord_node_network () =
     val mutable _result : obj  
     inherit SpecUnit.ContextSpecification()
         override this.Because () =
-            this._result <- ChordClient.JoinChordNodeNetwork ()
+            let chordServerProxy = new FakeChordServerProxy()
+            this._result <- ChordClient.JoinChordNodeNetwork 
+                "localhost:2222" "localhost:1111" chordServerProxy
         [<Test>]    
-        member this.should_have_a_successor_server_of__localhost_9876 () =    
-            this._result.ShouldEqual("net.tcp://localhost:9861") |> ignore
+        member this.should_have_a_successor_server_of__localhost_3333 () =    
+            this._result.ShouldEqual("localhost:3333") |> ignore
+
