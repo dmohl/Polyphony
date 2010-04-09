@@ -2,6 +2,7 @@
 
 open System
 open System.ServiceModel
+open System.Runtime.Serialization
 open ChordCommon
 open ChordServerProxyCommands
 
@@ -29,5 +30,5 @@ type ChordServerProxy() =
                     with
                     | ex ->
                         service.Abort |> ignore
-                | _ -> service.Close |> ignore                            
+                | _ -> service.Abort |> ignore                            
 

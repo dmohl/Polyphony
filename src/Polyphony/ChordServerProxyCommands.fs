@@ -14,21 +14,19 @@ let RunGetCommand (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
     | value -> Some(value)
 
 let RunJoinCommand (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
-    match proxy.RequestJoinChordNodeNetwork inputArguments.[0] with
-    | null -> None
-    | value -> Some(value)
+    Some(proxy.RequestJoinChordNodeNetwork inputArguments.[0] :> obj) 
 
 let RunUpdateSuccessorNode (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
     match proxy.UpdateSuccessorNode inputArguments.[0] with
     | null -> None
-    | value -> Some(value)
+    | value -> Some(value :> obj)
     
 let RunGetSuccessorNodeCommand (proxy:ChordServer.IChordServer) =
     match proxy.GetSuccessorNode () with
     | null -> None
-    | value -> Some(value)
+    | value -> Some(value :> obj)
 
-let RunCommand proxy operationContract inputArguments =
+let RunCommand proxy operationContract inputArguments : obj option =
     match operationContract with
     | CommandType.Put -> RunPutCommand proxy inputArguments
     | CommandType.Get -> RunGetCommand proxy inputArguments

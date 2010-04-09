@@ -11,15 +11,15 @@ open ChordCommon
 [<ServiceContract>]  
 type IChordServer = interface   
     [<OperationContract>]  
-    abstract GetSuccessorNode : unit -> obj
+    abstract GetSuccessorNode : unit -> string
     [<OperationContract>]  
     abstract PutValueByKey : key:obj -> value:obj -> unit  
     [<OperationContract>]  
     abstract GetValueByKey : value:obj -> obj  
     [<OperationContract>]  
-    abstract UpdateSuccessorNode : newSuccessorNode:string -> obj  
+    abstract UpdateSuccessorNode : newSuccessorNode:string -> string  
     [<OperationContract>]  
-    abstract RequestJoinChordNodeNetwork : requestorNode:string -> obj  
+    abstract RequestJoinChordNodeNetwork : requestorNode:string -> NodeNeighbors  
 end
 
 [<ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)>]
@@ -31,14 +31,14 @@ type ChordServer = class
         node = node; successorNode = successorNode}
     interface IChordServer with
         member x.GetSuccessorNode () =
-            x.successorNode :> obj
+            x.successorNode
         member x.PutValueByKey key value =
             x.hashTable.Add(key, value)
         member x.GetValueByKey key =
             x.hashTable.Item(key)
         member x.UpdateSuccessorNode newSuccessorNode =
             x.successorNode <- newSuccessorNode 
-            x.successorNode :> obj
+            x.successorNode
         member x.RequestJoinChordNodeNetwork requestorNode =
             let result = 
                 match requestorNode with
@@ -49,7 +49,10 @@ type ChordServer = class
                 // return the current node as both the predecessor and the successor.
                 | _ when requestorNode = x.node || x.node = x.successorNode ->
                     x.successorNode <- requestorNode 
-                    {PredecessorNode = x.node; SuccessorNode = x.node}
+                    let nodeNeighbors = new NodeNeighbors()
+                    nodeNeighbors.PredecessorNode <- x.node
+                    nodeNeighbors.SuccessorNode <- x.node
+                    nodeNeighbors
                 // If the requestor node is in between the current node and the 
                 // current node's successor, then make the current node's successor
                 // the requestor node and return the current node as the requestor
@@ -58,11 +61,18 @@ type ChordServer = class
                 | _ when requestorNode > x.node && requestorNode < x.successorNode -> 
                     let requestorsSuccessor = x.successorNode 
                     x.successorNode <- requestorNode
-                    {PredecessorNode = x.node; SuccessorNode = requestorsSuccessor}
+                    let nodeNeighbors = new NodeNeighbors()
+                    nodeNeighbors.PredecessorNode <- x.node
+                    nodeNeighbors.SuccessorNode <- x.node
+                    nodeNeighbors
                 // We don't know who the predecessor or successor is.  
                 // Try the current nodes successor and see if they know what to do.   
-                | _ -> {PredecessorNode = x.successorNode; SuccessorNode = x.successorNode}   
-            result :> obj        
+                | _ -> 
+                    let nodeNeighbors = new NodeNeighbors()
+                    nodeNeighbors.PredecessorNode <- x.node
+                    nodeNeighbors.SuccessorNode <- x.node
+                    nodeNeighbors
+            result
 end
 
 let logException (ex:Exception) =
