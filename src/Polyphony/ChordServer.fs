@@ -1,6 +1,7 @@
 ﻿module ChordServer
 
 open System
+open System.Collections.Generic
 open System.ServiceModel
 open System.Collections
 open System.Configuration
@@ -15,9 +16,17 @@ type ChordServer = class
     val hashTable : Hashtable
     val node : string
     val mutable successorNode : string
+    val fingerNodes : IDictionary<string,string>
     new (node, successorNode) = {hashTable = new Hashtable(); 
-        node = node; successorNode = successorNode}
+        node = node; successorNode = successorNode; fingerNodes = new Dictionary<string,string>()}
+    member x.AddToFingerNodes node =
+        match x.fingerNodes.ContainsKey node with
+        | false -> x.fingerNodes.Add(node, node)
+        | _ -> node |> ignore // do nothing    
     interface IChordServer with
+        member x.GetFingerNodes () =
+            [ for nodeKeyValue in x.fingerNodes
+              -> nodeKeyValue ]
         member x.GetSuccessorNode () =
             x.successorNode
         member x.UpdateSuccessorNode newSuccessorNode =
@@ -40,6 +49,7 @@ type ChordServer = class
                     BuildNodeNeighbors x.node requestorsSuccessor
                 | _ -> 
                     BuildNodeNeighbors x.successorNode x.successorNode
+            x.AddToFingerNodes requestorNode        
             result
 end
    

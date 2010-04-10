@@ -1,5 +1,6 @@
 ﻿module ChordContracts
 
+open System.Collections.Generic
 open System.ServiceModel
 open System.Runtime.Serialization
 
@@ -18,6 +19,8 @@ type NodeNeighbors() =
 
 [<ServiceContract>]  
 type IChordServer = interface   
+    [<OperationContract>]
+    abstract GetFingerNodes : unit -> KeyValuePair<string, string> list
     [<OperationContract>]  
     abstract GetSuccessorNode : unit -> string
     [<OperationContract>]  
