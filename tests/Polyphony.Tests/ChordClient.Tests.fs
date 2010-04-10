@@ -35,7 +35,7 @@ type ChordClient__when_running_a_get_command () =
             this._result.ShouldEqual("1") |> ignore
 
 [<TestFixture>]      
-type ChordClient__when_joining_the_chord_node_network () =   
+type ChordClient__when_joining_the_chord_node_network_with_a_node_inbetween_two_existing_nodes () =   
     [<DefaultValue(false)>]  
     val mutable _result : obj  
     inherit SpecUnit.ContextSpecification()
@@ -47,3 +47,14 @@ type ChordClient__when_joining_the_chord_node_network () =
         member this.should_have_a_successor_server_of__localhost_3333 () =    
             this._result.ShouldEqual("localhost:3333") |> ignore
 
+type ChordClient__when_joining_the_chord_node_network_with_a_node_less_than_the_smallest_existing_node () =   
+    [<DefaultValue(false)>]  
+    val mutable _result : obj  
+    inherit SpecUnit.ContextSpecification()
+        override this.Because () =
+            let chordServerProxy = new FakeChordServerProxy()
+            this._result <- ChordClient.JoinChordNodeNetwork 
+                "localhost:0001" "localhost:1111" chordServerProxy
+        [<Test>]    
+        member this.should_have_a_successor_server_of__localhost_1111 () =    
+            this._result.ShouldEqual("localhost:1111") |> ignore

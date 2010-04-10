@@ -120,8 +120,8 @@ type ChordServer__when_requesting_to_join_the_node_network_for_the_third_node__g
         member this.should_have_a_predecessor_of_localhost_1334 () =
             this._result.PredecessorNode.ShouldEqual("localhost:1334") |> ignore
         [<Test>]
-        member this.should_have_a_successor_of_localhost_1234 () =
-            this._result.SuccessorNode.ShouldEqual("localhost:1234") |> ignore
+        member this.should_have_a_successor_of_localhost_1334 () =
+            this._result.SuccessorNode.ShouldEqual("localhost:1334") |> ignore
         [<Test>]
         member this.should_have_a_successor_on_the_current_node_of_localhost_1334 () =
             this._chordServer.GetSuccessorNode().ShouldEqual("localhost:1334") |> ignore
@@ -140,8 +140,8 @@ type ChordServer__when_requesting_to_join_the_node_network_for_the_third_node__l
         member this.should_have_a_predecessor_of_localhost_1334 () =
             this._result.PredecessorNode.ShouldEqual("localhost:1334") |> ignore
         [<Test>]
-        member this.should_have_a_successor_of_localhost_1234 () =
-            this._result.SuccessorNode.ShouldEqual("localhost:1234") |> ignore
+        member this.should_have_a_successor_of_localhost_1334 () =
+            this._result.SuccessorNode.ShouldEqual("localhost:1334") |> ignore
         [<Test>]
         member this.should_have_a_successor_on_the_current_node_of_localhost_1334 () =
             this._chordServer.GetSuccessorNode().ShouldEqual("localhost:1334") |> ignore
