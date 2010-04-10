@@ -5,7 +5,7 @@ open NUnit.Framework
 open SpecUnit
 open ChordServer
 open System.ServiceModel
-open ChordDataContracts
+open ChordContracts
 
 [<TestFixture>]      
 type ChordServer__when_initializing_the_server () =   

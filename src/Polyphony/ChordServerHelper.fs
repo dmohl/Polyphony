@@ -1,6 +1,6 @@
 ﻿module ChordServerHelper
 
-open ChordDataContracts
+open ChordContracts
 
 let BuildNodeNeighbors predecessor successor = 
     let nodeNeighbors = new NodeNeighbors()

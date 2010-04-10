@@ -2,26 +2,27 @@
 
 open System
 open System.ServiceModel
+open ChordContracts
 open ChordCommon
 
-let RunPutCommand (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
+let RunPutCommand (proxy:IChordServer) (inputArguments:string[]) =
     proxy.PutValueByKey inputArguments.[1] inputArguments.[2]
     Some("PUT Successful" :> obj)
 
-let RunGetCommand (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
+let RunGetCommand (proxy:IChordServer) (inputArguments:string[]) =
     match proxy.GetValueByKey inputArguments.[1] with
     | null -> None
     | value -> Some(value)
 
-let RunJoinCommand (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
+let RunJoinCommand (proxy:IChordServer) (inputArguments:string[]) =
     Some(proxy.RequestJoinChordNodeNetwork inputArguments.[0] :> obj) 
 
-let RunUpdateSuccessorNode (proxy:ChordServer.IChordServer) (inputArguments:string[]) =
+let RunUpdateSuccessorNode (proxy:IChordServer) (inputArguments:string[]) =
     match proxy.UpdateSuccessorNode inputArguments.[0] with
     | null -> None
     | value -> Some(value :> obj)
     
-let RunGetSuccessorNodeCommand (proxy:ChordServer.IChordServer) =
+let RunGetSuccessorNodeCommand (proxy:IChordServer) =
     match proxy.GetSuccessorNode () with
     | null -> None
     | value -> Some(value :> obj)

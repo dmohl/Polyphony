@@ -5,6 +5,7 @@ open System.ServiceModel
 open System.Runtime.Serialization
 open ChordCommon
 open ChordServerProxyCommands
+open ChordContracts
 
 type IChordServerProxy = interface   
     abstract CallServer : server:string -> operationContract:CommandType -> inputArguments:string[] -> obj option
@@ -13,7 +14,7 @@ end
 type ChordServerProxy() = 
     interface IChordServerProxy with
         member this.CallServer server operationContract inputArguments =
-            let service = new ChannelFactory<ChordServer.IChordServer>(
+            let service = new ChannelFactory<IChordServer>(
                                 new NetTcpBinding(), server)  
             try                    
                 try

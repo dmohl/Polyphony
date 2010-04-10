@@ -8,21 +8,7 @@ open System.Net
 open SettingsProvider
 open ChordCommon
 open ChordServerHelper
-open ChordDataContracts
-
-[<ServiceContract>]  
-type IChordServer = interface   
-    [<OperationContract>]  
-    abstract GetSuccessorNode : unit -> string
-    [<OperationContract>]  
-    abstract UpdateSuccessorNode : newSuccessorNode:string -> string  
-    [<OperationContract>]  
-    abstract PutValueByKey : key:obj -> value:obj -> unit  
-    [<OperationContract>]  
-    abstract GetValueByKey : value:obj -> obj  
-    [<OperationContract>]  
-    abstract RequestJoinChordNodeNetwork : requestorNode:string -> NodeNeighbors  
-end
+open ChordContracts
 
 [<ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)>]
 type ChordServer = class

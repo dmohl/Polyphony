@@ -4,7 +4,7 @@ open System
 open System.Configuration
 open ChordServerProxy
 open ChordCommon
-open ChordDataContracts
+open ChordContracts
 open SettingsProvider
 
 let GetLocalNode (settingsProvider:ISettingsProvider) = settingsProvider.GetApplicationSetting("LocalNode")
