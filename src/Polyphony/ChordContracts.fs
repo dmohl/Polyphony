@@ -23,7 +23,7 @@ type IChordServer = interface
     [<OperationContract>]  
     abstract UpdateSuccessorNode : newSuccessorNode:string -> string  
     [<OperationContract>]  
-    abstract PutValueByKey : key:obj -> value:obj -> unit  
+    abstract PutValueByKey : key:obj -> value:obj -> obj  
     [<OperationContract>]  
     abstract GetValueByKey : value:obj -> obj  
     [<OperationContract>]  

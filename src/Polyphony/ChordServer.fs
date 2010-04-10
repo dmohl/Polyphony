@@ -25,6 +25,7 @@ type ChordServer = class
             x.successorNode
         member x.PutValueByKey key value =
             x.hashTable.Add(key, value)
+            key
         member x.GetValueByKey key =
             x.hashTable.Item(key)
         member x.RequestJoinChordNodeNetwork requestorNode =
