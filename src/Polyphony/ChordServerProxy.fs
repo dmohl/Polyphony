@@ -24,11 +24,12 @@ type ChordServerProxy() =
                     None
             finally
                 match service.State with
-                | CommunicationState.Faulted -> 
+                | serviceState when serviceState <> CommunicationState.Faulted -> 
                     try
                         service.Close |> ignore
                     with
                     | ex ->
                         service.Abort |> ignore
-                | _ -> service.Abort |> ignore                            
+                | _ -> service.Abort |> ignore 
+                                           
 

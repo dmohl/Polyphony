@@ -24,11 +24,9 @@ let RunGetCommand node (inputArguments:string[]) (chordServerProxy:IChordServerP
         | None -> 
             let successorNodeOption = chordServerProxy.CallServer node CommandType.GetSuccessorNode inputArguments 
             match successorNodeOption with
-            | Some successorNode when localNode = (successorNode :?> string) ->
-                "The Key was not found" :> obj
             | Some successorNode when startingNode = "" -> getValue (successorNode :?> string) localNode
             | Some successorNode -> getValue (successorNode :?> string) startingNode
-            | None -> "The Key was not found" :> obj
+            | _ -> "The Key was not found" :> obj
     getValue localNode ""
 
 let RunGetSuccessorCommand node (chordServerProxy:IChordServerProxy) (settingsProvider:ISettingsProvider) = 
