@@ -5,6 +5,7 @@ open NUnit.Framework
 open SpecUnit
 open ChordServer
 open System.ServiceModel
+open ChordDataContracts
 
 [<TestFixture>]      
 type ChordServer__when_initializing_the_server () =   
@@ -44,3 +45,43 @@ type ChordServer__when_updating_the_successor_node () =
         [<Test>]
         member this.should_have_a_result_of_localhost_2222 () =
             this._result.ShouldEqual("localhost:2222") |> ignore
+
+[<TestFixture>]
+type ChordServer__when_requesting_to_join_the_node_network_for_the_first_node () =
+    [<DefaultValue(false)>]
+    val mutable _result : NodeNeighbors
+    [<DefaultValue(false)>]
+    val mutable _chordServer : IChordServer
+    inherit SpecUnit.ContextSpecification()
+        override this.Context () = 
+            this._chordServer <- new ChordServer("localhost:1234","localhost:1234") :> IChordServer
+            this._result <- this._chordServer.RequestJoinChordNodeNetwork "localhost:1234"
+        [<Test>]
+        member this.should_have_a_predecessor_of_localhost_1234 () =
+            this._result.PredecessorNode.ShouldEqual("localhost:1234") |> ignore
+        [<Test>]
+        member this.should_have_a_successor_of_localhost_1234 () =
+            this._result.SuccessorNode.ShouldEqual("localhost:1234") |> ignore
+        [<Test>]
+        member this.should_have_a_successor_on_the_current_node_of_localhost_2222 () =
+            this._chordServer.GetSuccessorNode().ShouldEqual("localhost:1234") |> ignore
+
+[<TestFixture>]
+type ChordServer__when_requesting_to_join_the_node_network_for_the_second_node () =
+    [<DefaultValue(false)>]
+    val mutable _result : NodeNeighbors
+    [<DefaultValue(false)>]
+    val mutable _chordServer : IChordServer
+    inherit SpecUnit.ContextSpecification()
+        override this.Context () = 
+            this._chordServer <- new ChordServer("localhost:1234","localhost:1234") :> IChordServer
+            this._result <- this._chordServer.RequestJoinChordNodeNetwork "localhost:2222"  
+        [<Test>]
+        member this.should_have_a_predecessor_of_localhost_1234 () =
+            this._result.PredecessorNode.ShouldEqual("localhost:1234") |> ignore
+        [<Test>]
+        member this.should_have_a_successor_of_localhost_1234 () =
+            this._result.SuccessorNode.ShouldEqual("localhost:1234") |> ignore
+        [<Test>]
+        member this.should_have_a_successor_on_the_current_node_of_localhost_2222 () =
+            this._chordServer.GetSuccessorNode().ShouldEqual("localhost:2222") |> ignore
