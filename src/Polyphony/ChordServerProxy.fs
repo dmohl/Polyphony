@@ -5,7 +5,7 @@ open System.Configuration
 open System.ServiceModel
 open System.Runtime.Serialization
 open ChordCommon
-open ChordServerProxyCommands
+open ChordServerFacade
 open ChordContracts
 open SettingsProvider
 

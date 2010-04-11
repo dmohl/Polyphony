@@ -1,4 +1,4 @@
-﻿module ChordServerProxyCommands
+﻿module ChordServerFacade
 
 open System
 open System.ServiceModel

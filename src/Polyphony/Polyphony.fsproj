@@ -35,7 +35,7 @@
     <Compile Include="ChordContracts.fs" />
     <Compile Include="ChordServerHelper.fs" />
     <Compile Include="ChordServer.fs" />
-    <Compile Include="ChordServerProxyCommands.fs" />
+    <Compile Include="ChordServerFacade.fs" />
     <Compile Include="ChordServerProxy.fs" />
     <Compile Include="ChordClient.fs" />
     <Compile Include="Program.fs" />
