@@ -62,7 +62,6 @@ let JoinChordNodeNetwork localNode remoteNode (chordServerProxy:IChordServerProx
                 joinTheNetwork nodeNeighbors.SuccessorNode possiblePredecessorNode
             | _ when startingNode = nodeNeighbors.SuccessorNode -> 
                 chordServerProxy.CallServer possiblePredecessorNode CommandType.UpdateSuccessorNode [|localNode|] |> ignore
-                chordServerProxy.CallServer nodeNeighbors.SuccessorNode CommandType.UpdateSuccessorNode [|possiblePredecessorNode|] |> ignore
                 nodeNeighbors.SuccessorNode
             | _ -> joinTheNetwork nodeNeighbors.SuccessorNode startingNode
         | None -> localNode
