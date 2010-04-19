@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Polyphony", "src\Polyphony\Polyphony.fsproj", "{09E1A33E-8FBB-4447-8E6C-7AB49A817808}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Polyphony.Tests", "tests\Polyphony.Tests\Polyphony.Tests.fsproj", "{E7A39B3E-7513-4696-AC22-0242D9311A4F}"
