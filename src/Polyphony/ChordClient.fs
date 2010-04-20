@@ -50,22 +50,23 @@ let RunCommand(input:string) (chordServerProxy:IChordServerProxy) (settingsProvi
     Console.WriteLine(result) |> ignore
     result
 
+let rec FindSuccessorNode possiblePredecessorNode startingNode localNode (chordServerProxy:IChordServerProxy) =
+    let valueOption = chordServerProxy.CallServer possiblePredecessorNode CommandType.Join [|localNode|]
+    match valueOption with
+    | Some value -> 
+        let nodeNeighbors = value :?> NodeNeighbors
+        match nodeNeighbors.PredecessorNode with
+        | predecessorNode when possiblePredecessorNode = predecessorNode -> nodeNeighbors.SuccessorNode
+        | _ when startingNode = nodeNeighbors.SuccessorNode -> 
+            chordServerProxy.CallServer possiblePredecessorNode CommandType.UpdateSuccessorNode [|localNode|] |> ignore
+            nodeNeighbors.SuccessorNode
+        | _ when startingNode = "" ->
+            FindSuccessorNode nodeNeighbors.SuccessorNode possiblePredecessorNode localNode chordServerProxy
+        | _ -> FindSuccessorNode nodeNeighbors.SuccessorNode startingNode localNode chordServerProxy
+    | None -> localNode
+
 let JoinChordNodeNetwork localNode remoteNode (chordServerProxy:IChordServerProxy) =
-    let rec joinTheNetwork possiblePredecessorNode startingNode =
-        let valueOption = chordServerProxy.CallServer possiblePredecessorNode CommandType.Join [|localNode|]
-        match valueOption with
-        | Some value -> 
-            let nodeNeighbors = value :?> NodeNeighbors
-            match nodeNeighbors.PredecessorNode with
-            | predecessorNode when possiblePredecessorNode = predecessorNode -> nodeNeighbors.SuccessorNode
-            | _ when startingNode = "" ->
-                joinTheNetwork nodeNeighbors.SuccessorNode possiblePredecessorNode
-            | _ when startingNode = nodeNeighbors.SuccessorNode -> 
-                chordServerProxy.CallServer possiblePredecessorNode CommandType.UpdateSuccessorNode [|localNode|] |> ignore
-                nodeNeighbors.SuccessorNode
-            | _ -> joinTheNetwork nodeNeighbors.SuccessorNode startingNode
-        | None -> localNode
-    let successorNode = joinTheNetwork remoteNode ""
+    let successorNode = FindSuccessorNode remoteNode "" localNode chordServerProxy
     chordServerProxy.CallServer localNode 
         CommandType.UpdateSuccessorNode [|successorNode|] |> ignore
     successorNode    
