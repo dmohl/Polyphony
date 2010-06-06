@@ -9,6 +9,30 @@ open SettingsProvider
 
 let GetLocalNode (settingsProvider:ISettingsProvider) = settingsProvider.GetApplicationSetting("LocalNode")
 
+let (|PossiblePredecessorIsPredecessor|_|) possiblePredecessorNode predecessorNode =
+    match predecessorNode with 
+    | _ when predecessorNode = possiblePredecessorNode -> 
+        Some PossiblePredecessorIsPredecessor 
+    | _ -> None
+let (|StartingNodeEqualsSuccessor|_|) startingNode successorNode =
+    match startingNode with 
+    | _ when startingNode = successorNode -> Some StartingNodeEqualsSuccessor
+    | _ -> None
+let (|StartingNodeIsEmpty|_|) startingNode =
+    match startingNode with 
+    | "" -> Some StartingNodeIsEmpty
+    | _ -> None
+let (|OptionStartingNodeIsEmpty|_|) startingNode optionSuccessorNode =
+    match optionSuccessorNode with 
+    | Some successorNode when startingNode = "" -> 
+        Some (OptionStartingNodeIsEmpty successorNode)
+    | _ -> None
+let (|OptionStartingNodeIsNotSuccessor|_|) startingNode optionSuccessorNode =
+    match optionSuccessorNode with 
+    | Some successorNode when startingNode <> (string successorNode) -> 
+        Some (OptionStartingNodeIsNotSuccessor successorNode)
+    | _ -> None
+
 let RunPutCommand node (inputArguments:string[]) (chordServerProxy:IChordServerProxy) (settingsProvider:ISettingsProvider) = 
     let valueOption = chordServerProxy.CallServer (GetLocalNode settingsProvider) CommandType.Put inputArguments 
     match valueOption with
@@ -24,8 +48,10 @@ let RunGetCommand node (inputArguments:string[]) (chordServerProxy:IChordServerP
         | None -> 
             let successorNodeOption = chordServerProxy.CallServer node CommandType.GetSuccessorNode inputArguments 
             match successorNodeOption with
-            | Some successorNode when startingNode = "" -> getValue (successorNode :?> string) localNode
-            | Some successorNode when startingNode <> (successorNode :?> string) -> getValue (successorNode :?> string) startingNode
+            | OptionStartingNodeIsEmpty startingNode successorNode -> 
+                getValue (successorNode :?> string) localNode
+            | OptionStartingNodeIsNotSuccessor startingNode successorNode -> 
+                getValue (successorNode :?> string) startingNode
             | None -> "Node not found" :> obj
             | _ -> "The Key was not found" :> obj
     getValue localNode ""
@@ -56,12 +82,13 @@ let rec FindSuccessorNode possiblePredecessorNode startingNode localNode (chordS
     match valueOption with
     | Some value -> 
         let nodeNeighbors = value :?> NodeNeighbors
+        let successorNode = nodeNeighbors.SuccessorNode
         match nodeNeighbors.PredecessorNode with
-        | predecessorNode when possiblePredecessorNode = predecessorNode -> nodeNeighbors.SuccessorNode
-        | _ when startingNode = nodeNeighbors.SuccessorNode -> 
+        | PossiblePredecessorIsPredecessor possiblePredecessorNode -> nodeNeighbors.SuccessorNode
+        | StartingNodeEqualsSuccessor startingNode successorNode -> 
             chordServerProxy.CallServer possiblePredecessorNode CommandType.UpdateSuccessorNode [|localNode|] |> ignore
             nodeNeighbors.SuccessorNode
-        | _ when startingNode = "" ->
+        | StartingNodeIsEmpty startingNode ->
             FindSuccessorNode nodeNeighbors.SuccessorNode possiblePredecessorNode localNode chordServerProxy
         | _ -> FindSuccessorNode nodeNeighbors.SuccessorNode startingNode localNode chordServerProxy
     | None -> localNode
